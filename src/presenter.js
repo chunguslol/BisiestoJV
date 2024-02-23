@@ -1,15 +1,27 @@
-import sumar from "./sumador";
+// presenter.js
+import esBisiesto from "./Bisiesto.js";
 
-const first = document.querySelector("#primer-numero");
-const second = document.querySelector("#segundo-numero");
-const form = document.querySelector("#sumar-form");
+const form = document.querySelector("#esBisiesto-form");
 const div = document.querySelector("#resultado-div");
 
 form.addEventListener("submit", (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const firstNumber = Number.parseInt(first.value);
-  const secondNumber = Number.parseInt(second.value);
+    div.innerHTML = "";
 
-  div.innerHTML = "<p>" + sumar(firstNumber, secondNumber) + "</p>";
+    const anioIngresado = parseInt(document.querySelector("#anio").value, 10);
+
+    if (!isNaN(anioIngresado)) {
+        const resultado = esBisiesto(anioIngresado);
+
+        // Mostrar mensaje específico
+        if (resultado) {
+            div.innerHTML = "<p>Sí es bisiesto.</p>";
+        } else {
+            div.innerHTML = "<p>No es bisiesto.</p>";
+        }
+    } else {
+        console.error("Por favor, ingrese un año válido.");
+    }
 });
+
