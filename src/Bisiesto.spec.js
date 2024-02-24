@@ -18,5 +18,9 @@ describe("Bisiesto", () => {
         expect(esBisiesto(2017)).toEqual(false);
     });
     
+    it("Todos los años que no son divisibles por 4 NO son años bisiestos (2017)", () => {
+        expect(esBisiesto(2017)).toEqual(false);
+    });
+
 });
 
